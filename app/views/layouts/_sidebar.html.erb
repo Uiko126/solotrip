@@ -1,0 +1,28 @@
+<div class="sidebar-list">
+
+  <div class="logo_box">
+  <%= image_tag 'solo2.png', class:"home-image" %>
+  </div>
+
+  <div class = "contents_list_box">
+
+    <div class = "contents_list">
+
+      <div class="listings-header">
+        <div class ="header-text">
+          menu
+        </div>
+      </div>
+      
+        <ul class="page-list">
+          <%= sidebar_link_item('一人旅ガイド', home_guide_path) %>
+          <%= sidebar_link_item('場所を探す', sends_spot_path) %>
+          <%= sidebar_link_item('みんなの旅録', posts_path) %>
+          <%= sidebar_link_item('つぶやきの場', tweets_path) %>
+        </ul>
+
+    </div>
+
+  </div>
+
+</div>

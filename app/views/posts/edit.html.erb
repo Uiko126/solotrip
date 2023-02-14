@@ -1,0 +1,32 @@
+<%= form_for @post do |f| %>
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, :size => 30 %>
+
+    <%= f.label :日付・期間 %>
+    <%= f.text_field :period, :size => 30 %>
+
+    <%= f.label :国名 %>
+    <%= f.text_field :country, :size => 30 %>
+
+    <%= f.label :地域 %>
+    <%= f.text_field :region, :size => 30 %>
+
+    <%= f.label :旅程詳細・旅の感想 %>
+    <%= f.text_field :about, :size => 140 %> 
+
+    <%= f.label :写真 %>
+    <%= f.file_field :image %>
+
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class='form-check'>
+          <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+          <% end %>
+      </div>
+    <% end %>
+
+    <%= f.submit "編集する" %>
+
+    <%= link_to "戻る", posts_path %>
+  <% end %>

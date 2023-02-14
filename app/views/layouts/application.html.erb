@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Solotrip</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <script src ="https://kit.fontawesome.com/d0753fba9b.js" crossorigin="anonymous"></script> 
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   
+  </head>
+
+  <body>
+
+  <div class="container">
+
+    <div class="sidebar">
+      <%= render'layouts/sidebar' %>
+    </div>
+
+
+    <div class="main-contents">
+      <%= yield %>
+    </div>
+
+
+  </div>
+
+    <footer>
+    <p>Copyright © GeekSalon All Rights Reserved.</p>
+    </footer>
+
+
+  </body>
+</html>

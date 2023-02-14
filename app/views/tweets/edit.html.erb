@@ -1,0 +1,12 @@
+<%= form_for @tweet do |f| %>
+    
+    <%= f.label :body %>
+    <%= f.text_field :body, :size => 100 %> 
+
+    <%= f.label :画像 %>
+    <%= f.file_field :image2 %>
+
+    <%= f.submit "更新" %>
+
+    <%= link_to "戻る", tweets_path %>
+<% end %>

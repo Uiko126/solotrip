@@ -1,0 +1,60 @@
+<div class = "back-box">
+
+ <div class = "guide-first-box">
+ 
+   <div class = "header">
+      <div class="header-list">
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to 'ホーム', :controller => "home", :action => "index" %></li>
+              <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete , class: "logout_button"%></li>
+              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <% else %>
+              <li><%= link_to 'ホーム', home_index_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+          </ul>
+      </div>
+   </div>
+
+   <div class = "contents-title">
+   一人旅ガイド
+   </div>
+
+ </div>
+
+<div class="guide-body">
+  <dev class = "menu">
+    <h3>目次</h3>
+      <li>一人旅のすすめ</li>
+      <li>目的地を決めよう</li>
+      <li>宿をとろう</li>
+      <li>交通手段をしらべよう</li>
+      <li>旅の持ち物</li>
+  </div>
+
+  <div class = "first-block">
+  <h2>一人旅のすすめ</h2>
+      <p>まずは1泊2日から。さあ、一人旅を始めてみましょう。</p>
+  </div>
+
+  <div class = "second-block">
+  <h2>目的地を決めよう</h2>
+  </div>
+
+  <div class = "third-block">
+  <h2>宿をとろう</h2>
+  </div>
+
+  <div class = "fourth-block">
+  <h2>交通手段をしらべよう</h2>
+  </div>
+
+  <div class = "fifth-block">
+  <h2>旅の持ち物</h2>
+  </div>
+</div>
+
+</div>
+

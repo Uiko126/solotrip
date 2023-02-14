@@ -1,0 +1,53 @@
+<div class = "log_in">
+
+  <div class = "home_logo">
+    <div class = "home_text">
+      <p>一人旅を始めよう。</p>
+      <p>新しい世界を見つけよう。</p>
+    </div>
+  </div>
+
+
+  <div class="log_in_box">
+
+    <div class= "title_area">
+      <div class="title">
+       ログイン　Log in
+      </div>
+    </div>
+
+    <div class = "field_area">
+
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field_input", :placeholder =>"　メールアドレス/email" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "current-password", class:"field_input", :placeholder =>"　パスワード/password" %>
+        </div>
+
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :"パスワードを保存する/save this password" , class: "save_check" %>
+          </div>
+        <% end %>
+
+    </div>  
+
+    <div class = "submit_area">
+      <div class="actions">
+          <%= f.submit "ログイン/log in", class:"submit_button" %>
+          </div>
+      <% end %>
+
+          <%= render "users/shared/links" %>
+
+      </div>
+    </div>
+
+  </div>
+</div>

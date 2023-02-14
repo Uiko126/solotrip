@@ -1,0 +1,82 @@
+<div class = "show-back-box">
+  <div class = "show-box">
+      <h4>詳細</h4>
+
+      <div class="tweet-show-box">
+
+        <div class = "user">
+          <div class = "user-icon">
+           <%= image_tag @tweet.user.image_url, size: "33x33" if @tweet.user.image? %>
+          </div>
+          <div class = "user-name">
+            <%= link_to @tweet.user.name, user_path(@tweet.user.id) %>
+          </div>
+
+          <div class = "edit">
+            <% if user_signed_in? && current_user.id == @tweet.user_id %>
+              <%= link_to "編集", edit_tweet_path(@tweet.id) %> 
+              <%= button_to "削除", tweet_path(@tweet.id), method: :delete %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class = "tweet-show">
+
+            <div class = "tweet-body">
+              <%= @tweet.body %>
+            </div>
+
+            <div class ="tweet-photo">
+              <%= image_tag @tweet.image2_url, size: "250x200" if @tweet.image2? %>
+            </div>
+
+        </div>
+
+        <div class = "create-time">
+          <%= @tweet.created_at %>
+        </div>
+        
+      </div>
+
+
+    </div>
+
+    <div class = "feedback-box">
+      <p>コメント</p>
+
+        <div class="feedback-input">
+          <% if user_signed_in? %>
+            <%= form_with(model: [@tweet, @feedback], local: true) do |f| %>
+              <%= f.text_area :content %>
+              <%= button_tag type: "submit" do %>
+                <i class="far fa-feedbacks"></i> コメントする
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% @feedbacks.each do |c| %>
+
+          <div class = "feedback-contents">
+            <div class = "user-icon-box">
+              <%= image_tag c.user.image_url, size: "40x40" if c.user.image? %>
+            </div>
+            <div class = "feedback-text">
+              <div class = "user-name">
+                <%= c.user.name unless c.user.blank? %>
+              </div>
+              <div class = "content">
+                <%= c.content %>
+              </div>
+            </div>
+              <br>
+          </div>
+        
+        <% end %>
+
+    </div>
+  </div>
+
+  <%= link_to "Tweet一覧に戻る", tweets_path %>
+
+</div>

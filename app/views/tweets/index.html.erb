@@ -1,0 +1,90 @@
+<div class = "back-box">
+
+ <div class = "first-box">
+ 
+   <div class = "header">
+      <div class="header-list">
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to 'ホーム', :controller => "home", :action => "index" %></li>
+              <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete , class: "logout_button"%></li>
+              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <% else %>
+              <li><%= link_to 'ホーム', home_index_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+          </ul>
+      </div>
+   </div>
+
+   <div class = "contents-title">
+    つぶやきの場
+   </div>
+
+ </div>
+
+ <div class = "second-box">
+
+   <div class = "second-sub-box">
+  
+    <div class = "search-box">
+
+      <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= button_tag type: "submit", class: "btn btn-default" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="btn-gradient">
+      <span><%= link_to "つぶやく", new_tweet_path %></span>
+      <i class="fas fa-arrow-alt-circle-right fa-fw"></i>
+    </div>
+
+   </div>  
+
+    <div class="tweets-container">
+      <% @tweets.each do |t| %>
+
+        <div class="tweet">
+
+          <div class = "user">
+            <div class = "user-icon">
+             <%= image_tag t.user.image_url, class: "user-icon-image", size: "33x33" if t.user.image? %>
+            </div>
+            <div class = "user-name">
+              <%= link_to t.user.name, user_path(t.user.id) %>
+            </div>
+          </div>
+
+          <div class = "main-tweets">
+
+            <div class = "tweet-text">
+              <%= t.body %>
+            </div>
+            <div class = "photo">
+              <%= image_tag t.image2_url, size: "125x100" if t.image2? %>
+            </div>
+
+          </div>
+
+          <div class = "tweets-footer">
+            <div class = "show">
+              <p><%= link_to "詳細", tweet_path(t.id) %> </p>
+            </div>
+
+            <div class = "time">
+              <%= t.created_at %>
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

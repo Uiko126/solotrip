@@ -1,0 +1,64 @@
+<div class = "home" >
+  <div class = "home-block">
+    <div class = "home_logo">
+      <div class = "home_text">
+        <p>一人旅に出かけよう</p>
+        <p>新しい世界を見つけよう</p>
+      </div>
+    </div>
+  </div>
+
+  <div class = "top_link">
+
+    <div class = "top_icon">
+      <div class = "top_icon_img">
+        <%= link_to home_guide_path do %>
+          <%= image_tag 'guide.jpg', class:"icon-image" %>
+        <% end %>
+      </div>
+
+      <div class = "top_icon_text">
+        <%= link_to '一人旅ガイド', :controller => "home", :action => "guide" %>
+      </div>
+    </div>
+
+    <div class = "top_icon">
+      <div class = "top_icon_img">
+       <%= link_to sends_spot_path do %>
+        <%= image_tag 'search.jpg', class:"icon-image" %>
+       <% end %>
+      </div>
+
+      <div class = "top_icon_text">
+        <%= link_to '場所を探す', :controller => "sends", :action => "spot" %>
+      </div>
+    </div>
+
+    <div class = "top_icon">
+      <div class = "top_icon_img">
+        <%= link_to posts_path do %>
+          <%= image_tag 'tabiroku.jpg', class:"icon-image" %>
+        <% end %>
+      </div>
+
+      <div class = "top_icon_text">
+        <%= link_to 'みんなの旅録', posts_path %>
+      </div>
+    </div>
+
+
+    <div class = "top_icon">
+      <div class = "top_icon_img">
+       <%= link_to tweets_path do %>
+        <%= image_tag 'tubuyaki.jpg', class:"icon-image" %>
+       <% end %>
+      </div>
+
+      <div class = "top_icon_text">
+        <%= link_to 'つぶやきの場', tweets_path %>
+      </div>
+    </div>
+
+
+  </div>
+</div>

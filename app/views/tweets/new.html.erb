@@ -1,0 +1,18 @@
+<h1>つぶやきの場</h1>
+<h3>新規投稿</h3>
+<%= form_for @tweet do |f| %>
+
+<div class="field">
+  <%= f.label :つぶやく  %>
+  <%= f.text_area :body, :size => "50x4" %>
+</div>
+
+<div class="field">
+  <%= f.label :画像 %>
+  <%= f.file_field :image2 %>
+</div>
+
+<%= f.submit "投稿" %>
+<% end %>
+
+<%= link_to "つぶやき一覧に戻る", tweets_path %>

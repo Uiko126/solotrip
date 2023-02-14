@@ -1,0 +1,130 @@
+<div class = "back-box">
+<h3>新規投稿</h3>
+
+<%= form_for @send do |f| %>
+
+  <%= f.select :category, [["スポット", "spot"], ["店", "shop"], ["宿", "accommodation"]], include_blank: "投稿カテゴリー？" %>
+
+  <div class="field">
+    <%= f.label :title,"名称" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <h5>おすすめ度</h5>
+   <div class="post_form">
+    <%= f.radio_button :overall, 5 ,id: 'star1'%>
+    <label for="star1"><span class="text">Max</span>★</label>
+
+    <%= f.radio_button :overall, 4 ,id: 'star2'%>
+    <label for="star2"><span class="text">４</span>★</label>
+
+    <%= f.radio_button :overall, 3 ,id: 'star3'%>
+    <label for="star3"><span class="text">３</span>★</label>
+
+    <%= f.radio_button :overall, 2 ,id: 'star4'%>
+    <label for="star4"><span class="text">２</span>★</label>
+
+    <%= f.radio_button :overall, 1 ,id: 'star5'%>
+    <label for="star5"><span class="text">Min</span>★</label>
+   </div>
+
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :アクセス %>
+    <%= f.text_field :access, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :詳細  %>
+    <%= f.text_area :detail, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lat,"緯度" %>
+    <%= f.text_field :lat,:value =>"緯度", id: :lat %>
+    
+    <%= f.label :lng,"経度" %>
+    <%= f.text_field :lng,:value =>"経度", id: :lng %>
+  </div>
+  
+  <h2>Map</h2>
+
+  <input id="address" type="textbox" value="GeekSalon">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+  <div id='map'></div>
+
+  <style>
+#map {
+  height: 300px;
+  width: 300px;
+}
+</style>
+
+<script>
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center:  {lat: 35.6803997, lng:139.7690174},  //東京
+    zoom: 15,
+    
+  });
+}
+
+//検索後のマップ作成
+let geocoder
+let aft
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+        //マーカーが複数できないようにする
+        if (aft == true){
+            marker.setMap(null);
+        }
+
+        //新しくマーカーを作成する
+        map.setCenter(results[0].geometry.location);
+            marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            draggable: true	// ドラッグ可能にする
+        });
+
+        //二度目以降か判断
+        aft = true
+
+        //検索した時に緯度経度を入力する
+        document.getElementById('lat').value = results[0].geometry.location.lat();
+        document.getElementById('lng').value = results[0].geometry.location.lng();
+
+        // マーカーのドロップ（ドラッグ終了）時のイベント
+        google.maps.event.addListener( marker, 'dragend', function(ev){
+            // イベントの引数evの、プロパティ.latLngが緯度経度
+            document.getElementById('lat').value = ev.latLng.lat();
+            document.getElementById('lng').value = ev.latLng.lng();
+        });
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });   
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXUvaxi2f8wQUIgbH1uh-WNjLplM-J2eg&callback=initMap" async defer></script>
+  
+    <%= f.submit "投稿する" %>
+
+<% end %>
+
+<%= link_to "一覧に戻る", sends_spot_path %>
+
+</div>

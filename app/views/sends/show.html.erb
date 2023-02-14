@@ -1,0 +1,60 @@
+<div class = "back-box">
+<h3>詳細</h3>
+<div class="send">
+  <p><%= @send.title %></p>
+  <p><%= @send.address %></p>
+  <p><%= @send.access %></p>
+  <p><%= @send.detail %></p>
+  <p><%= @send.created_at %></p>
+
+  <div>
+    <h5>おすすめ度：
+      <span class="star-rating">
+        <span class="star-rating-front" style="width: <%= getPercent(@send.overall) %>%;">★★★★★</span>
+        <span class="star-rating-back">★★★★★</span>
+      </span> 
+    </h5>
+  </div>
+
+
+</div>
+
+<h4>gmap</h4>
+
+<div class="map">
+  <div id="display"></div>
+  <div id="map">
+    <div type="text/javascript">
+          <script>
+            let map
+            let marker
+            function initMap(){
+              geocoder = new google.maps.Geocoder()
+            
+              map = new google.maps.Map(document.getElementById('map'), {
+                center:  {lat: <%= @send.latitude %>, lng: <%= @send.longitude %>},
+                zoom: 15,
+              });
+            
+              marker = new google.maps.Marker({
+                position:  {lat: <%= @send.latitude %>, lng: <%= @send.longitude %>},
+                map: map
+              });
+            }         
+          </script>
+      <script  async
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAP_API_KEY'] %>&callback=initMap">
+      </script>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? && current_user.id == @send.user_id %>
+  <%= link_to "編集", edit_send_path(@send.id) %>
+  <%= button_to "削除", send_path(@send.id), method: :delete %>
+<% end %> 
+
+
+<%= link_to "一覧に戻る", sends_spot_path %>
+
+</div>

@@ -1,0 +1,139 @@
+
+.sign_up{
+    width: 100%;
+    height: 100%;
+    background-image: image-url('home_img.jpg');
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+
+   .home_logo{
+    width: 45%;
+    height: 75%;
+    margin-left: 6%;
+    margin-bottom: 8%;
+    background-image: image-url('solo2.png');
+    background-size: 90%;
+    background-repeat: no-repeat;
+
+
+    .home_text{
+        width: 80%;
+        height: 30%;
+        margin: auto;
+        margin-top: 60%;
+        padding-top: 8%;
+        padding-left: 10%;
+
+        font-family: 'Inter';
+        font-size: 18px;
+
+        p{
+            margin-left: 40px;
+            margin-bottom: 10px;
+        }
+    }
+   }
+
+   .sign_up_box{
+    width: 40%;
+    height: 80%;
+    margin-right: 5%;
+    margin-left: auto;
+    border-radius: 5%;
+    background: rgba(217, 217, 217, 0.5);
+
+    .title_area{
+        width: 100%;
+        height: 20px;
+        margin: auto;
+        padding-top: 50px;
+
+        .title{
+            width: 100%;
+            height: 50px;
+            background-color: rgb(255, 237, 213);
+            margin: auto;
+
+            font-family: 'Inter';
+            font-size: 25px;
+            line-height: 50px;
+            text-align: center;
+        }
+    }
+
+    .field_area{
+        width: 70%;
+        height: 150px;
+        margin: auto;
+        margin-top: 10%;
+
+        .field{
+            margin-bottom: 10px;
+            .field_input{
+                width: 100%;
+                height: 30px;
+                border-radius: .5rem;
+                background-color: white;
+                border: 0px none;
+
+                font-family: 'Inter';
+                font-size: 12px;
+                line-height: 30px;
+             }
+        }
+    }
+
+    .submit_area{
+        width: 100%;
+        height: 70px;
+        margin: auto;
+        margin-top: 10%;
+
+        .actions{
+            width: 100%;
+            height: 50px;
+            margin: auto;
+            text-align: center;
+            padding-top: 20px;
+
+            .submit_button{
+                width: 50%;
+                height: 40px;
+                border-radius: .5rem;
+                font-size: 20px;
+                line-height: 40px;
+                border: 0px none;
+
+                --color: #60c2e5;
+                cursor: pointer;
+                border: 1px solid var(--color);
+                background-image: linear-gradient(135deg, var(--color) 50%, transparent 50%);
+                background-position: 100%;
+                background-size: 300%;
+                color: var(--color);
+                text-decoration: none;
+                transition: all 1s;
+            }
+
+            .submit_button:hover {
+                background-position: 0;
+                color: antiquewhite;
+            }
+        }
+
+        .share{
+            width: 100%;
+            text-align: center;
+
+            .share_text{
+                font-size: 12px;
+                color: black; 
+            }
+    
+        }
+
+    }
+   } 
+}

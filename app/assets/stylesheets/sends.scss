@@ -1,0 +1,144 @@
+// Place all the styles related to the sends controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.back-box{
+  width: 100%;
+  height:auto;
+
+  .send-first-box{
+      width: 100%;
+      height: 480px;
+      background-image: image-url('search.jpg');
+      background-size: cover;
+
+      
+  .header {
+      position: fixed;
+      top: 0;
+      font-family: "Segoe Print", "Meiryo UI", "メイリオ",Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+      height: 60px;
+      width: 100%;
+      margin-right: 0;
+      margin-left: auto;
+      background-color:rgba(255, 255, 255, 0);
+      position: sticky;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header a {
+      color: rgb(205, 205, 205); 
+      text-decoration: none; 
+    }
+
+    .header-list {
+      display: flex;
+      align-items: center;
+      margin-right: 0;
+      margin-left: auto;
+
+      .logout_button{
+        color: rgb(205, 205, 205);
+      }
+    }
+    .header ul {
+      display: flex;
+    }
+    .header li {
+      list-style: none;
+      margin-right: 40px;
+    }
+
+
+      .contents-title{
+          padding-top: 15%;
+          padding-left: 5%;
+          width: 50%;
+          height: 20%;
+          color: white;
+          font-size: 45px;
+      }
+  }
+
+
+.category {
+  display: flex;
+  align-items: center;
+}
+
+.post_form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .post_form input[type='radio']{
+    display: none;
+  }
+  .post_form label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 30px; /*星の大きさを変更するときはここ*/
+  }
+  .post_form label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+    color: gray;
+  }
+  .post_form label:hover,
+  .post_form label:hover ~ label,
+  .post_form input[type='radio']:checked ~ label{
+    color: #ffcc00;
+  }
+
+ //一覧ページの★
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 1em;
+    font-size: 25px;
+  }
+  .star-rating-front {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    display: inline-block;
+    color: #ccc;
+
+  }
+
+#map {
+  height: 350px;
+  width: 300px;
+}
+
+.main {
+  display: flex;
+}
+
+.spot-container {
+  padding-right: 250px;
+}
+
+.shop-container {
+  padding-right: 250px;
+}
+
+.accommodation-container {
+  padding-right: 250px;
+}
+
+}

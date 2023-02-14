@@ -1,0 +1,235 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.back-box{
+    width: 100%;
+    height:auto;
+    padding-bottom: 20px;
+
+    .posts-box{
+        width: 100%;
+        height: 480px;
+        background-image: image-url('tabiroku.jpg');
+        background-size: cover;
+        
+    .header {
+        position: fixed;
+        top: 0;
+        font-family: "Segoe Print", "Meiryo UI", "メイリオ",Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+        height: 60px;
+        width: 100%;
+        margin-right: 0;
+        margin-left: auto;
+        background-color:rgba(255, 255, 255, 0);
+        position: sticky;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header a {
+        color: rgb(205, 205, 205); 
+        text-decoration: none; 
+      }
+
+      .header-list {
+        display: flex;
+        align-items: center;
+        margin-right: 0;
+        margin-left: auto;
+
+        .logout_button{
+            color: rgb(205, 205, 205);
+        }
+      }
+      .header ul {
+        display: flex;
+      }
+      .header li {
+        list-style: none;
+        margin-right: 40px;
+      }
+
+
+        .contents-title{
+            padding-top: 15%;
+            padding-left: 5%;
+            width: 50%;
+            height: 20%;
+            color: white;
+            font-size: 45px;
+        }
+    }
+
+    .second-box{
+
+        .second-sub-box{
+           display: flex;
+
+           .search-box {
+            margin-top: 3%;
+            margin-left: 3%;
+            display: flex;
+            width: 97%;
+
+            .keyword-search{
+                width: 35%;
+                height: 100%;
+                padding-left: 5%;
+                display: flex;
+                align-items: center;
+            }
+
+            .tag-search{
+                width: 30%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+        }
+        
+        .search-box input[type="text"] {
+            flex-grow: 1;
+            padding: 0.7rem 0 0.7rem 0.8rem;
+            border: 1px solid #333947;
+            border-radius: 1.5rem 0 0 1.5rem;
+        }
+        
+        .search-box button {
+            cursor: pointer;
+            padding: .8rem .9rem .8rem .8rem;
+            border-radius: 0 1.5rem 1.5rem 0;
+            border: none;
+            background-color: #333947;
+            color: #fff;
+            font-size: .75rem;
+        }
+        
+        .search-box input:focus {
+            outline: 0;
+            border: 1px solid #4ab6f6;
+        }
+        
+        .search-box button:hover {
+            color: #4ab6f6;
+        }
+
+            
+
+        
+            .btn-gradient {
+                position: relative;
+                cursor: pointer;
+                width: 12rem;
+                height: 3rem;
+                line-height: 3rem;
+                border-radius: 2rem;
+                background-image: linear-gradient(135deg, #ebbba7 10%, #cfc7f8 100%);
+                box-shadow: 0 0 15px #bbb;
+                color: white;
+                text-decoration: none;
+                text-align: center;
+                margin-top: 3%;
+                margin-right: 3%;
+            }
+        
+
+            .btn-gradient i {
+                position: absolute;
+                line-height: 3rem;
+                right: 1rem;
+                transition: 0.5s;
+            }
+        
+
+            .btn-gradient:hover i {
+                right: 0.8rem;
+            }
+
+        }
+
+        .posts-container{
+          width: 96%;
+          height: auto;
+          padding-top: 3%;
+          padding-left: 4%;
+          align-items: center;
+          display: flex;
+          flex-wrap: wrap;
+          margin: auto;
+      
+          .post{
+              width: 250px;
+              height: auto;
+              border-radius: 1rem;
+              padding: 12px;
+              background-color: #f3f0ff;
+              margin-bottom: 20px;
+              margin: auto;
+              margin: 12px;
+
+              .posts-photo{
+                width: 80%;
+                height: 30%;
+              }
+      
+      
+              .user{
+                  width: 100%;
+                  height: 35px;
+                  border-bottom: 1px solid #333947;
+                  display: flex;
+      
+                  .user-icon{
+                      width: 33px;
+                      height: 33px;
+                      border-radius: 50%;
+                      background-image: image-url('noimage-user.png');
+                      background-size: 100% 100%;
+                      margin-left: 10px;
+
+                      .user-icon-image{
+                        width: 33px;
+                        height: 33px;
+                        border-radius: 50%;
+                      }
+
+                  }
+      
+                  .user-name{
+                      display: flex;
+                      width: 90%;
+                      align-items: center;
+                      padding-left: 10px;
+                  }
+              }
+      
+              .posts-footer{
+                  display: flex;
+                  .time{
+                      margin-right: 5px;
+                      margin-left: auto;
+                      font-size: 12px;
+                  }
+      
+                  .show{
+                      margin-left: 5px;
+                      display: flex;
+                      font-size: 13px;
+                  }
+              }
+      
+                   
+          
+      
+          }
+      
+          }
+    }
+}
+
+.post-show-back{
+    width: 100%;
+    height: auto;
+    padding-bottom: 20px;
+}
