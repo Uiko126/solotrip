@@ -24,106 +24,118 @@
 
  </div>
 
-<h3>投稿を検索</h3>
- <%= form_tag({controller:"sends",action:"spot"}, method: :get) do %>
-   <%= text_field_tag :search %>
-   <%= submit_tag '検索する'  %>
-<% end %>
-
-<div class="category">
-
-  <h3>スポット</h3> 
-  <h5><%= link_to "お店", sends_shop_path %></h5>
-  <h5><%= link_to "宿", sends_accommodation_path %></h5>
-</div>
-
-<%= link_to "新規投稿へ", new_send_path %>
-
-<div class="main">
-
-<div class="spot-container">
-    <% @spots.each do |t| %>
-        <h3><%= t.title %></h3>
-        <p>住所:<%= t.address %></p>
-        <p>アクセス:<%= t.access %></p>
-        <p><%= t.detail %></p>
-
-        <div>
-          <h5>おすすめ度：
-            <span class="star-rating">
-              <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
-              <span class="star-rating-back">★★★★★</span>
-            </span> 
-          </h5>
-        </div>
-
-        <p><%= t.user.email %></p>
-
-        <%= link_to "詳細へ", send_path(t.id) %>
-       
-        <% if user_signed_in? && current_user.id == t.user_id %>
-          <%= link_to "編集", edit_send_path(t.id) %>
-          <%= button_to "削除", send_path(t.id), method: :delete %>
-        <% end %> 
-
-    <% end %>
-</div>
-
-
-<div id='map'></div>
-
-
-
-<script>
-    function initMap() {
-
-      let latlng = new google.maps.LatLng(38.60, 139.5);
-  
-      let styles = [
-           {
-            stylers: [
-             { "saturation": 0 },
-             { "lightness": 0 }
-            ]
-           }
-          ];
-
-      let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5.5,
-          styles: styles,
-          center: latlng
-      });
-      let transitLayer = new google.maps.TransitLayer();
-      transitLayer.setMap(map);
-
-      <% @spots.each do |spot|%>
-        ( function() { 
-          let markerLatLng = { lat: <%= spot.latitude %>, lng: <%= spot.longitude %> }; 
-          let marker = new google.maps.Marker({ 
-            position: markerLatLng, 
-            map: map 
-          });
-
-          let infowindow = new google.maps.InfoWindow({
-            position: markerLatLng,
-            content: "<a href='<%= send_url(spot.id) %>' target='_blank'><h5><%= spot.title %></h5><%= spot.detail %></a>"
-          }); 
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-
-       })();
+<div class = "send-second-box">
+  <div class = "second-sub-box">
+    <div class = "search-box">
+     
+      <%= form_tag({controller:"sends",action:"spot"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= button_tag type: "submit", class: "btn btn-default" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
       <% end %>
+    </div>
 
-  }
-</script>
+    <div class="btn-gradient">
+      <span><%= link_to "新規投稿", new_send_path %></span>
+      <i class="fas fa-arrow-alt-circle-right fa-fw"></i>
+    </div>
+  </div> 
+  
+  <div class = "send-content-box">
 
-<script  async 
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXUvaxi2f8wQUIgbH1uh-WNjLplM-J2eg&callback=initMap">
-</script>
+    <div class="category">
+      <input type="radio" name="radioTab" class="tab-item" checked="" id="tab1">
+        <label for="tab1">スポット <i class="fa-solid fa-map-location-dot"></i></label>
+      <input type="radio" name="radioTab" class="tab-item" id="tab2">
+        <label for="tab2"><%= link_to "お店", sends_shop_path %> <i class="fa-solid fa-store"></i></label>
+      <input type="radio" name="radioTab" class="tab-item" id="tab3">
+        <label for="tab3"><%= link_to "宿", sends_accommodation_path %> <i class="fa-solid fa-bed"></i></label>
+    </div>
 
 
-<div>
+    <div class="main">
+
+      <div class="send-containers">
+        <% @spots.each do |t| %>
+          <div class = "each-container">  
+              <h3><%= t.title %></h3>
+              <p>住所:<%= t.address %></p>
+              <p>アクセス:<%= t.access %></p>
+              <p><%= t.detail %></p>
+
+              <div>
+                <h5>おすすめ度：
+                  <span class="star-rating">
+                    <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+                    <span class="star-rating-back">★★★★★</span>
+                  </span> 
+                </h5>
+              </div>
+
+              <%= link_to "詳細へ", send_path(t.id) %>
+            </div>  
+        <% end %> 
+      </div>
+
+      <div class = "google-map">
+        <div id='map'></div>
+
+        <script>
+            function initMap() {
+
+              let latlng = new google.maps.LatLng(38.60, 139.5);
+          
+              let styles = [
+                  {
+                    stylers: [
+                    { "saturation": 0 },
+                    { "lightness": 0 }
+                    ]
+                  }
+                  ];
+
+              let map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 5.5,
+                  styles: styles,
+                  center: latlng
+              });
+              let transitLayer = new google.maps.TransitLayer();
+              transitLayer.setMap(map);
+
+              <% @spots.each do |spot|%>
+                ( function() { 
+                  let markerLatLng = { lat: <%= spot.latitude %>, lng: <%= spot.longitude %> }; 
+                  let marker = new google.maps.Marker({ 
+                    position: markerLatLng, 
+                    map: map 
+                  });
+
+                  let infowindow = new google.maps.InfoWindow({
+                    position: markerLatLng,
+                    content: "<a href='<%= send_url(spot.id) %>' target='_blank'><h5><%= spot.title %></h5><%= spot.detail %></a>"
+                  }); 
+                  marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                  });
+
+              })();
+              <% end %>
+
+          }
+        </script>
+
+        <script  async 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXUvaxi2f8wQUIgbH1uh-WNjLplM-J2eg&callback=initMap">
+        </script>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 </div>
 

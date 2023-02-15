@@ -8,7 +8,7 @@
 
   .send-first-box{
       width: 100%;
-      height: 480px;
+      height: 260px;
       background-image: image-url('search.jpg');
       background-size: cover;
 
@@ -53,7 +53,7 @@
 
 
       .contents-title{
-          padding-top: 15%;
+          padding-top: 5%;
           padding-left: 5%;
           width: 50%;
           height: 20%;
@@ -62,62 +62,139 @@
       }
   }
 
+  .send-second-box{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    
+    .second-sub-box{
+      display: flex;
 
-.category {
-  display: flex;
-  align-items: center;
-}
+      .search-box {
+          width: 60%;
+          margin-top: 3%;
+          margin-left: 10%;
+          display: flex;
+      }
+      
+      .search-box input[type="text"] {
+          flex-grow: 1;
+          padding: 0.7rem 0 0.7rem 0.8rem;
+          border: 1px solid #333947;
+          border-radius: 1.5rem 0 0 1.5rem;
+      }
+      
+      .search-box button {
+          cursor: pointer;
+          padding: .8rem .9rem .8rem .8rem;
+          border-radius: 0 1.5rem 1.5rem 0;
+          border: none;
+          background-color: #333947;
+          color: #fff;
+          font-size: .75rem;
+      }
+      
+      .search-box input:focus {
+          outline: 0;
+          border: 1px solid #4ab6f6;
+      }
+      
+      .search-box button:hover {
+          color: #4ab6f6;
+      }
 
-.post_form{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-  }
-  .post_form input[type='radio']{
-    display: none;
-  }
-  .post_form label{
-    position: relative;
-    padding: 10px 10px 0;
-    color: gray;
-    cursor: pointer;
-    font-size: 30px; /*星の大きさを変更するときはここ*/
-  }
-  .post_form label .text{
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    text-align: center;
-    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
-    color: gray;
-  }
-  .post_form label:hover,
-  .post_form label:hover ~ label,
-  .post_form input[type='radio']:checked ~ label{
-    color: #ffcc00;
+
+
+    .btn-gradient {
+      position: relative;
+      cursor: pointer;
+      width: 12rem;
+      height: 3rem;
+      line-height: 3rem;
+      border-radius: 2rem;
+      background-image: linear-gradient(135deg, #ebbba7 10%, #cfc7f8 100%);
+      box-shadow: 0 0 15px #bbb;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 3%;
+      margin-right: 3%;
+    }
+
+
+    .btn-gradient i {
+      position: absolute;
+      line-height: 3rem;
+      right: 1rem;
+      transition: 0.5s;
+    }
+    
+
+    .btn-gradient:hover i {
+      right: 0.8rem;
+    }
   }
 
- //一覧ページの★
-  .star-rating {
-    position: relative;
-    display: inline-block;
-    width: 5em;
-    height: 1em;
-    font-size: 25px;
-  }
-  .star-rating-front {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    color: #ffcc33;
-  }
-  .star-rating-back {
-    display: inline-block;
-    color: #ccc;
+  .send-content-box{
+    width: 90%;
+    height: auto;
+    margin-left: 50px;
 
+    .category {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    
+      .tab-item {
+        display: none;
+      }
+    
+      .tab-item+label {
+        flex: 1;
+        order: -1;
+        cursor: pointer;
+        padding: 1rem .6em;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ddd;
+        color: #ccc;
+        white-space: nowrap;
+        text-align: center;
+        background-color: #fffaee;
+    }
+    
+      .tab-item:checked+label {
+        border: 2px solid #ddd;
+        border-bottom: none;
+        color: #333;
+        transition: color .5s ease-in-out;
+      }
+    }
+
+    .main{
+      width: 100%;
+      height: auto;
+      display: flex;
+
+      .send-containers{
+        width: 70%;
+        height: 100%;
+
+        .each-container{
+          width: 95%;
+          height: auto;
+          margin-top: 1%;
+          padding-left: 3%;
+          padding-top: 1%;
+          border-bottom: 1.5px solid #bbb;
+        }
+      }
+
+      .google-map{
+        height: auto;
+      }
+    }
   }
 
 #map {
@@ -125,20 +202,59 @@
   width: 300px;
 }
 
-.main {
+
+}
+}
+
+ //一覧ページの★
+ .star-rating {
+  position: relative;
+  display: inline-block;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.star-rating-front {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  display: inline-block;
+  color: #ccc;
+
+}
+
+//新規投稿の星
+.post_form{
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
-
-.spot-container {
-  padding-right: 250px;
+.post_form input[type='radio']{
+  display: none;
 }
-
-.shop-container {
-  padding-right: 250px;
+.post_form label{
+  position: relative;
+  padding: 10px 10px 0;
+  color: gray;
+  cursor: pointer;
+  font-size: 30px; /*星の大きさを変更するときはここ*/
 }
-
-.accommodation-container {
-  padding-right: 250px;
+.post_form label .text{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+  color: gray;
 }
-
+.post_form label:hover,
+.post_form label:hover ~ label,
+.post_form input[type='radio']:checked ~ label{
+  color: #ffcc00;
 }

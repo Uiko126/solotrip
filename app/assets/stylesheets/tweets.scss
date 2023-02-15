@@ -57,7 +57,7 @@
         }
     }
 
-    .second-box{
+    .tweet-second-box{
 
         margin: auto;
 
@@ -65,10 +65,10 @@
            display: flex;
 
         .search-box {
+            width: 60%;
             margin-top: 3%;
-            margin-left: 3%;
+            margin-left: 10%;
             display: flex;
-            width: 97%;
         }
         
         .search-box input[type="text"] {
